@@ -14,13 +14,18 @@ Run The Binary
 
 Now the REST API / HTTP Server Will Be Running on `http://localhost:9000`
 
+#### Web UI
+
 UI Can Be Accessed On `http://localhost:9000/home`
 
-Testing Using `curl` HTTP Client
+#### Testing Using `curl` HTTP Client
+#### Check API Health/Status (HTTP GET)
 
 ```bash
 curl -H "accept:application/json" -H "content-type:application/json" -X GET http://localhost:9000/api/health 2>/dev/null | python -m json.tool
 ```
+
+Response
 
 ```json
 {
@@ -28,9 +33,13 @@ curl -H "accept:application/json" -H "content-type:application/json" -X GET http
 }
 ```
 
+#### HTTP GET Request
+
 ```bash
 curl -H "accept:application/json" -H "content-type:application/json" -X GET http://localhost:9000/api/v1/getData 2>/dev/null | python -m json.tool
 ```
+
+Response
 
 ```json
 {
@@ -71,9 +80,13 @@ curl -H "accept:application/json" -H "content-type:application/json" -X GET http
 }
 ```
 
+#### HTTP POST Request
+
 ```bash
 curl -H "accept:application/json" -H "content-type:application/json" -d '{"length1": 15, "length2": 25}' -X POST http://localhost:9000/api/v1/processData 2>/dev/null | python -m json.tool
 ```
+
+Response
 
 ```json
 {
