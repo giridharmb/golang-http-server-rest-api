@@ -5,9 +5,6 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/gorilla/mux"
-	"github.com/rs/cors"
-	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -15,6 +12,10 @@ import (
 	"os"
 	"path"
 	"time"
+
+	"github.com/gorilla/mux"
+	"github.com/rs/cors"
+	"github.com/tidwall/gjson"
 	//"github.com/tidwall/gjson"
 )
 
@@ -69,17 +70,17 @@ func main() {
 		})
 
 		/*
-			curl -H "accept:application/json" -H "content-type:application/json" -X GET http://localhost:9000/api/health 2>/dev/null | python -m json.tool
+		   curl -H "accept:application/json" -H "content-type:application/json" -X GET http://localhost:9000/api/health 2>/dev/null | python -m json.tool
 		*/
 
 		router.HandleFunc("/api/v1/getData", HandlerGetData).Methods("GET")
 		/*
-			curl -H "accept:application/json" -H "content-type:application/json" -X GET http://localhost:9000/api/v1/getData 2>/dev/null | python -m json.tool
+		   curl -H "accept:application/json" -H "content-type:application/json" -X GET http://localhost:9000/api/v1/getData 2>/dev/null | python -m json.tool
 		*/
 
 		router.HandleFunc("/api/v1/processData", HandlerProcessData).Methods("POST")
 		/*
-			curl -H "accept:application/json" -H "content-type:application/json" -d '{"length1": 15, "length2": 25}' -X POST http://localhost:9000/api/v1/processData 2>/dev/null | python -m json.tool
+		   curl -H "accept:application/json" -H "content-type:application/json" -d '{"length1": 15, "length2": 25}' -X POST http://localhost:9000/api/v1/processData 2>/dev/null | python -m json.tool
 		*/
 
 		log.Fatal(srv.ListenAndServe())
